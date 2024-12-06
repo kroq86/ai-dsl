@@ -54,7 +54,7 @@ Define, train, and evaluate a CNN on the CIFAR-10 dataset:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo/ai-dsl.git
+   git clone https://github.com/kroq86/ai-dsl.git
    cd ai-dsl
    ```
 
