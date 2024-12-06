@@ -1,0 +1,26 @@
+(define cnn-model
+  (nn
+    (conv2d :input 3 :output 16 :kernel-size 3)
+    (relu)
+    (max-pool :kernel-size 2)
+    (conv2d :input 16 :output 32 :kernel-size 3)
+    (relu)
+    (max-pool :kernel-size 2)
+    (flatten)
+    (linear :input 1152 :output 10)
+    (softmax)))
+
+(train :model cnn-model
+  :dataset (load-dataset cifar10 :augment true)
+  :epochs 2
+  :optimizer sgd
+  :lr 0.01
+  :loss cross-entropy)
+
+(save cnn-model cnn_model.ai)
+
+(print "Training complete. Model saved.")
+
+(load-model cnn_model.ai :model cnn-model)
+
+(evaluate :model cnn-model :dataset (load-dataset cifar10))
